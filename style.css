@@ -1,0 +1,56 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: sans-serif;
+    background: rgb(0, 30, 77);
+}
+.container{
+    background: #fff;
+    width: 600px;
+    border-radius: 10px;
+    margin: 10% auto 0;
+    padding: 30px;
+}
+.app h1{
+    border-bottom: 1px solid #333;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+.app h2{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.btn-container .btn{
+    background: inherit;
+    width: 100%;
+    border: 1px solid #333;
+    outline: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    text-align: left;
+}
+.next-btn{
+    border: none;
+    outline: none;
+    background: rgb(0, 30, 77);
+    color: #fff;
+    padding: 12px 60px;
+    border-radius: 3px;
+    margin: 10px auto 0;
+    display: none;
+}
+.btn-container .btn:hover{
+    background: #000;
+    color: #fff;
+    transition: 0.15s;
+}
+.next-btn:hover{
+    background: rgb(30, 64, 115);
+    cursor: pointer;
+}
