@@ -50,6 +50,7 @@ const answerElement = document.querySelector(".btn-container")
 const nextButtonElement = document.querySelector(".next-btn")
 
 let currentQuestionIndex = 0
+let userScore = 0
 
 function showQuestion() {
     deletePrevious()
@@ -70,6 +71,8 @@ function showQuestion() {
             let userAnswer = e.target
             let isCorrect = userAnswer.dataset.correct === "true"
             userAnswer.classList.add((isCorrect ? "" : "in") + "correct")
+            if (isCorrect)
+                userScore++
 
             Array.from(answerElement.children).forEach(btn => {
                 btn.disabled = true
@@ -82,30 +85,25 @@ function showQuestion() {
 }
 showQuestion()
 
-function deletePrevious() {
-    while (answerElement.firstChild){
-        answerElement.removeChild(answerElement.firstChild)
-    }
-}
-
 nextButtonElement.addEventListener("click", () => {
-    if (currentQuestionIndex < questions.length)
-        nextQuest()
-    else
-        showQuestion()
-})
-
-function nextQuest() {
     currentQuestionIndex++
     if (currentQuestionIndex < questions.length)
         showQuestion()
     else
         showScore()
-}
+})
 
 function showScore() {
     deletePrevious()
-    questionElement.innerHTML = "You scored xd"
+    questionElement.innerHTML = `You scored ${userScore*100/5} out of 100 ` + (userScore>=3 ? ":)" : ":\\")
     nextButtonElement.innerHTML = "Play Again"
+
+    userScore = 0
     currentQuestionIndex = -1
+}
+
+function deletePrevious() {
+    while (answerElement.firstChild){
+        answerElement.removeChild(answerElement.firstChild)
+    }
 }
