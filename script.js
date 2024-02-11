@@ -50,11 +50,10 @@ const answerElement = document.querySelector(".btn-container")
 const nextButtonElement = document.querySelector(".next-btn")
 
 let currentQuestionIndex = 0
-let userScore  = 0
 
 function showQuestion() {
     deletePrevious()
-    currentQuestionIndex = 0
+    nextButtonElement.style.display = "none"
 
     let currentQuestion = questions[currentQuestionIndex]
     questionElement.innerHTML = currentQuestion.question
@@ -87,4 +86,26 @@ function deletePrevious() {
     while (answerElement.firstChild){
         answerElement.removeChild(answerElement.firstChild)
     }
+}
+
+nextButtonElement.addEventListener("click", () => {
+    if (currentQuestionIndex < questions.length)
+        nextQuest()
+    else
+        showQuestion()
+})
+
+function nextQuest() {
+    currentQuestionIndex++
+    if (currentQuestionIndex < questions.length)
+        showQuestion()
+    else
+        showScore()
+}
+
+function showScore() {
+    deletePrevious()
+    questionElement.innerHTML = "You scored xd"
+    nextButtonElement.innerHTML = "Play Again"
+    currentQuestionIndex = -1
 }
