@@ -5,10 +5,10 @@
 }
 body{
     font-family: sans-serif;
-    background: rgb(0, 30, 77);
+    background-image: linear-gradient(to top, #accbee 100%, #e7f0fd 100%);
 }
 .container{
-    background: #fff;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
     width: 600px;
     border-radius: 10px;
     margin: 10% auto 0;
@@ -25,7 +25,8 @@ body{
     margin-bottom: 10px;
 }
 .btn-container .btn{
-    background: inherit;
+    background: #fff;
+    color: #000;
     width: 100%;
     border: 1px solid #333;
     outline: none;
@@ -34,6 +35,11 @@ body{
     margin-bottom: 20px;
     border-radius: 3px;
     text-align: left;
+}
+.btn-container .btn:not([disabled]):hover{
+    background: #000;
+    color: #fff;
+    transition: 0.15s;
 }
 .next-btn{
     border: none;
@@ -45,12 +51,16 @@ body{
     margin: 10px auto 0;
     display: none;
 }
-.btn-container .btn:hover{
-    background: #000;
-    color: #fff;
-    transition: 0.15s;
-}
 .next-btn:hover{
     background: rgb(30, 64, 115);
     cursor: pointer;
+}
+.correct.btn{
+    background: lightgreen;
+}
+.incorrect.btn{
+    background: lightcoral;
+}
+.btn:disabled{
+    cursor: not-allowed;
 }

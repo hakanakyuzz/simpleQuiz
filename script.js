@@ -50,11 +50,12 @@ const answerElement = document.querySelector(".btn-container")
 const nextButtonElement = document.querySelector(".next-btn")
 
 let currentQuestionIndex = 0
+let userScore  = 0
 
 function showQuestion() {
     deletePrevious()
-
     currentQuestionIndex = 0
+
     let currentQuestion = questions[currentQuestionIndex]
     questionElement.innerHTML = currentQuestion.question
 
@@ -63,6 +64,21 @@ function showQuestion() {
         button.innerHTML = answer.text
         button.classList.add("btn")
         answerElement.appendChild(button)
+
+        button.dataset.correct = answer.correct
+
+        button.addEventListener("click", (e) => {
+            let userAnswer = e.target
+            let isCorrect = userAnswer.dataset.correct === "true"
+            userAnswer.classList.add((isCorrect ? "" : "in") + "correct")
+
+            Array.from(answerElement.children).forEach(btn => {
+                btn.disabled = true
+                if (btn.dataset.correct === "true")
+                    btn.classList.add("correct")
+            })
+            nextButtonElement.style.display = "block"
+        })
     })
 }
 showQuestion()
